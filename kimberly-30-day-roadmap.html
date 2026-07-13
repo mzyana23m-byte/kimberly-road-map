@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kimberly McCarthy — 30-Day Launch Roadmap</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ivory:#FBF8F3; --paper:#FFFFFF; --ink:#211D1A; --ink-soft:#5C554D;
+  --bordeaux:#702440; --bordeaux-deep:#4A1226; --gold:#B08D57; --line:#E7DFD3;
+  --serif:'Cormorant Garamond',Georgia,serif; --sans:'Jost',system-ui,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--ivory);color:var(--ink);font-family:var(--sans);font-weight:300;line-height:1.7;-webkit-font-smoothing:antialiased;}
+.wrap{max-width:760px;margin:0 auto;padding:0 24px 80px;}
+
+header{padding:72px 0 48px;text-align:center;border-bottom:1px solid var(--line);}
+.eyebrow{font-size:12px;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:20px;}
+h1{font-family:var(--serif);font-weight:500;font-size:clamp(38px,7vw,56px);line-height:1.1;letter-spacing:0.01em;}
+h1 em{font-style:italic;color:var(--bordeaux);}
+.sub{font-family:var(--serif);font-style:italic;font-size:20px;color:var(--ink-soft);margin-top:16px;}
+
+.progress-block{padding:32px 0 0;}
+.progress-row{display:flex;justify-content:space-between;align-items:baseline;font-size:13px;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:10px;}
+.progress-row strong{color:var(--bordeaux);font-weight:500;}
+.bar{height:3px;background:var(--line);position:relative;}
+.bar-fill{position:absolute;left:0;top:0;bottom:0;width:0%;background:var(--bordeaux);transition:width .4s ease;}
+
+.intro{padding:44px 0 8px;}
+.intro p{font-size:17px;color:var(--ink-soft);max-width:60ch;margin:0 auto 14px;text-align:center;}
+.intro p b{font-weight:500;color:var(--ink);}
+
+.spine{position:relative;margin-top:40px;}
+.spine::before{content:"";position:absolute;left:19px;top:20px;bottom:20px;width:1px;background:var(--line);}
+.week{position:relative;padding-left:60px;margin-bottom:28px;}
+.node{position:absolute;left:8px;top:24px;width:22px;height:22px;border:1px solid var(--gold);background:var(--ivory);transform:rotate(45deg);display:flex;align-items:center;justify-content:center;}
+.node span{transform:rotate(-45deg);font-size:11px;font-weight:500;color:var(--bordeaux);}
+.week.done .node{background:var(--bordeaux);border-color:var(--bordeaux);}
+.week.done .node span{color:#fff;}
+
+.card{background:var(--paper);border:1px solid var(--line);}
+.week-head{width:100%;display:flex;align-items:center;gap:16px;padding:22px 24px;background:none;border:none;cursor:pointer;text-align:left;font-family:var(--sans);}
+.wk-meta{flex:1;}
+.wk-days{font-size:11px;letter-spacing:0.24em;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:4px;}
+.wk-title{font-family:var(--serif);font-size:26px;font-weight:500;line-height:1.2;color:var(--ink);}
+.wk-job{font-size:14px;color:var(--ink-soft);margin-top:2px;}
+.wk-count{font-size:12px;letter-spacing:0.1em;color:var(--ink-soft);white-space:nowrap;}
+.chev{width:10px;height:10px;border-right:1px solid var(--ink-soft);border-bottom:1px solid var(--ink-soft);transform:rotate(45deg);transition:transform .25s ease;flex-shrink:0;margin-top:-4px;}
+.week.open .chev{transform:rotate(225deg);margin-top:4px;}
+.week-body{display:none;border-top:1px solid var(--line);padding:8px 24px 18px;}
+.week.open .week-body{display:block;}
+
+.task{display:flex;gap:14px;align-items:flex-start;padding:16px 0;border-bottom:1px solid var(--line);cursor:pointer;}
+.task:last-child{border-bottom:none;}
+.box{width:18px;height:18px;border:1px solid var(--gold);flex-shrink:0;margin-top:4px;position:relative;transition:background .2s;}
+.task input{position:absolute;opacity:0;pointer-events:none;}
+.task input:checked ~ .box{background:var(--bordeaux);border-color:var(--bordeaux);}
+.task input:checked ~ .box::after{content:"";position:absolute;left:5px;top:1px;width:5px;height:10px;border-right:1.5px solid #fff;border-bottom:1.5px solid #fff;transform:rotate(45deg);}
+.t-text{flex:1;}
+.t-day{display:inline-block;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--bordeaux);font-weight:500;margin-bottom:2px;}
+.t-main{font-size:16px;font-weight:400;color:var(--ink);line-height:1.5;}
+.t-note{font-size:14px;color:var(--ink-soft);margin-top:3px;line-height:1.6;}
+.task input:checked ~ .t-text{opacity:0.45;}
+.task input:checked ~ .t-text .t-main{text-decoration:line-through;}
+
+.rules{margin-top:64px;background:var(--bordeaux-deep);color:#F4E9DF;padding:44px 36px;}
+.rules h2{font-family:var(--serif);font-weight:500;font-size:28px;color:#fff;margin-bottom:6px;}
+.rules .r-sub{font-family:var(--serif);font-style:italic;font-size:16px;color:var(--gold);margin-bottom:24px;}
+.rules ul{list-style:none;}
+.rules li{padding:10px 0;border-bottom:1px solid rgba(244,233,223,0.15);font-size:15px;display:flex;gap:14px;}
+.rules li:last-child{border-bottom:none;}
+.rules li::before{content:"◆";color:var(--gold);font-size:9px;line-height:2.6;}
+
+.wins{margin-top:64px;}
+.wins h2{font-family:var(--serif);font-weight:500;font-size:28px;text-align:center;margin-bottom:8px;}
+.wins .w-sub{font-family:var(--serif);font-style:italic;text-align:center;color:var(--ink-soft);margin-bottom:32px;}
+.win-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);}
+.win{background:var(--paper);padding:28px 22px;text-align:center;}
+.win .n{font-family:var(--serif);font-size:32px;font-weight:500;color:var(--bordeaux);line-height:1.1;}
+.win .l{font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-soft);margin-top:8px;}
+.win-list{margin-top:24px;font-size:15px;color:var(--ink-soft);text-align:center;line-height:2;}
+
+footer{margin-top:72px;padding-top:32px;border-top:1px solid var(--line);text-align:center;}
+footer p{font-family:var(--serif);font-style:italic;font-size:19px;color:var(--ink-soft);}
+footer .mark{margin-top:18px;color:var(--gold);font-size:12px;letter-spacing:0.3em;text-transform:uppercase;font-weight:500;}
+
+@media print{
+  .week-body{display:block !important;}
+  .chev{display:none;}
+  body{background:#fff;}
+}
+@media (max-width:520px){
+  .week{padding-left:48px;}
+  .spine::before{left:15px;}
+  .node{left:4px;}
+  .week-head{padding:18px 16px;}
+  .week-body{padding:4px 16px 14px;}
+  .rules{padding:32px 22px;}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="eyebrow">Kimberly McCarthy · Presence &amp; Power</div>
+  <h1>The 30-day <em>launch</em> roadmap</h1>
+  <p class="sub">From zero to first high-ticket clients. Every week has one job.</p>
+</header>
+
+<div class="progress-block">
+  <div class="progress-row"><span>Progress</span><span><strong id="pDone">0</strong> of <span id="pTotal">0</span> complete</span></div>
+  <div class="bar"><div class="bar-fill" id="pBar"></div></div>
+</div>
+
+<div class="intro">
+  <p>You don't start with content — you start with the foundation. Post before the positioning is locked and you're filling a leaky bucket. <b>Week 1 fixes the leaks. Weeks 2–4 fill it.</b></p>
+  <p>The first 30 days aren't about selling. They're about making 7,000 followers understand exactly who you are, why you're different, and why they should care. <b>Influence and reach before conversion.</b> The sales come from that.</p>
+</div>
+
+<div class="spine">
+
+<!-- WEEK 1 -->
+<section class="week open" id="w1">
+  <div class="node"><span>1</span></div>
+  <div class="card">
+    <button class="week-head" onclick="toggle('w1')">
+      <div class="wk-meta">
+        <div class="wk-days">Days 1–7</div>
+        <div class="wk-title">Foundation</div>
+        <div class="wk-job">Build everything once so it runs forever</div>
+      </div>
+      <span class="wk-count" data-count></span>
+      <span class="chev"></span>
+    </button>
+    <div class="week-body">
+      <label class="task"><input type="checkbox" data-k="w1t1"><span class="box"></span><span class="t-text"><span class="t-day">Day 1–2</span><span class="t-main">Lock the positioning</span><span class="t-note">No longer an "etiquette coach" — presence and power for high-earning women. One-liner: "I teach ambitious women how to stop shrinking in rooms they've already earned the right to be in." Confirm the Diamond Polish Method name.</span></span></label>
+      <label class="task"><input type="checkbox" data-k="w1t2"><span class="box"></span><span class="t-text"><span class="t-day">Day 3</span><span class="t-main">Build the offer</span><span class="t-note">Stop charging hourly. Package a 6–8 week 1:1 program at $2,500–$5,000 founding price. Outline the "Command the Room" masterclass. Write the offer sheet: what they get, what changes, the guarantee.</span></span></label>
+      <label class="task"><input type="checkbox" data-k="w1t3"><span class="box"></span><span class="t-text"><span class="t-day">Day 4</span><span class="t-main">Optimize the profile</span><span class="t-note">New IG bio led by outcome, not credential. Update YouTube description and banner to match. Set the link to your best content or the masterclass waitlist.</span></span></label>
+      <label class="task"><input type="checkbox" data-k="w1t4"><span class="box"></span><span class="t-text"><span class="t-day">Day 5–6</span><span class="t-main">Film the B-roll vault</span><span class="t-note">One afternoon: gym, café, hotel lobby, meal prep, getting ready, the farm-town contrast shots. Raw material for 30 days of content.</span></span></label>
+      <label class="task"><input type="checkbox" data-k="w1t5"><span class="box"></span><span class="t-text"><span class="t-day">Day 5–6</span><span class="t-main">Send testimonial requests — today</span><span class="t-note">The realtor and the interior designer. A 3–5 sentence written testimonial from each is enough to start. Set up the social-proof Drive folder.</span></span></label>
+      <label class="task"><input type="checkbox" data-k="w1t6"><span class="box"></span><span class="t-text"><span class="t-day">Day 5–6</span><span class="t-main">Build the study list</span><span class="t-note">Micah Meyer, William Hansen, Gary Vee, Andy Frisella, 3–5 femininity/refinement creators. Review weekly.</span></span></label>
+      <label class="task"><input type="checkbox" data-k="w1t7"><span class="box"></span><span class="t-text"><span class="t-day">Day 7</span><span class="t-main">Write the launch email</span><span class="t-note">110 subscribers nurtured for two years, never sold to — including millionaires. Announce the new positioning, tell the transformation story briefly, introduce the offer, CTA to book a call. Send it in Week 2.</span></span></label>
+    </div>
+  </div>
+</section>
+
+<!-- WEEK 2 -->
+<section class="week" id="w2">
+  <div class="node"><span>2</span></div>
+  <div class="card">
+    <button class="week-head" onclick="toggle('w2')">
+      <div class="wk-meta">
+        <div class="wk-days">Days 8–14</div>
+        <div class="wk-title">First content + newsletter launch</div>
+        <div class="wk-job">First qualified eyes, first booked call</div>
+      </div>
+      <span class="wk-count" data-count></span>
+      <span class="chev"></span>
+    </button>
+    <div class="week-body">
+      <label class="task"><input type="checkbox" data-k="w2t1"><span class="box"></span><span class="t-text"><span class="t-day">Day 8–9</span><span class="t-main">Film the Mechanism Video</span><span class="t-note">"You don't have a competence problem. You have a presence problem." Interview style — Omar asks, you riff. Bullet points, never a word-for-word script. This is the hidden VSL; edit it properly. CTA: the free masterclass.</span></span></label>
+      <label class="task"><input type="checkbox" data-k="w2t2"><span class="box"></span><span class="t-text"><span class="t-day">Day 10</span><span class="t-main">Film Reels 1 &amp; 2</span><span class="t-note">"You don't need to be nicer — kindness is a choice, and that's what makes it powerful." + "We don't hire the most capable people. We hire the ones we like the most." Talking head, crass-classy delivery.</span></span></label>
+      <label class="task"><input type="checkbox" data-k="w2t3"><span class="box"></span><span class="t-text"><span class="t-day">Day 11</span><span class="t-main">Send the newsletter launch email</span><span class="t-note">Your fastest path to $8–10K this month. Transformation story, new positioning in one sentence, 3 founding-price spots, one CTA. These people already trust you — don't overthink it.</span></span></label>
+      <label class="task"><input type="checkbox" data-k="w2t4"><span class="box"></span><span class="t-text"><span class="t-day">Day 12–13</span><span class="t-main">Post + engage</span><span class="t-note">Mechanism Video live on YouTube, one reel per day on IG. Respond to every comment and DM personally. Start the story rhythm: day-in-the-life, presence tip, case-study tease.</span></span></label>
+      <label class="task"><input type="checkbox" data-k="w2t5"><span class="box"></span><span class="t-text"><span class="t-day">Day 14</span><span class="t-main">Review and adjust</span><span class="t-note">Which reel got more saves and sends? Follow up personally with every newsletter reply. No calls booked yet means the CTA or the offer framing needs fixing — before Week 3.</span></span></label>
+    </div>
+  </div>
+</section>
+
+<!-- WEEK 3 -->
+<section class="week" id="w3">
+  <div class="node"><span>3</span></div>
+  <div class="card">
+    <button class="week-head" onclick="toggle('w3')">
+      <div class="wk-meta">
+        <div class="wk-days">Days 15–21</div>
+        <div class="wk-title">Volume + proof</div>
+        <div class="wk-job">Trust at scale, first testimonials live</div>
+      </div>
+      <span class="wk-count" data-count></span>
+      <span class="chev"></span>
+    </button>
+    <div class="week-body">
+      <label class="task"><input type="checkbox" data-k="w3t1"><span class="box"></span><span class="t-text"><span class="t-day">Day 15–16</span><span class="t-main">Film the Mission Vlog</span><span class="t-note">"I wasn't born classy. I chose it." The origin story: Newfoundland to Toronto at 22 with $1,000, the air mattress, back to school at 40, Kimberly 2.0. A brand video, not a value video — it makes people root for you.</span></span></label>
+      <label class="task"><input type="checkbox" data-k="w3t2"><span class="box"></span><span class="t-text"><span class="t-day">Day 17</span><span class="t-main">Film Reels 3 &amp; 4</span><span class="t-note">The $5M contract lost to bad manners (anonymized) — the money-gap video. + "Discipline isn't a punishment. It's freedom." Broad, dream-follower fuel.</span></span></label>
+      <label class="task"><input type="checkbox" data-k="w3t3"><span class="box"></span><span class="t-text"><span class="t-day">Day 18–19</span><span class="t-main">Get the testimonials live</span><span class="t-note">Post whatever the realtor and designer sent — story highlight, IG post, community tab. Even a text screenshot works. Film a 60-second genuine reaction clip; it converts harder than any screenshot.</span></span></label>
+      <label class="task"><input type="checkbox" data-k="w3t4"><span class="box"></span><span class="t-text"><span class="t-day">Day 20</span><span class="t-main">Run the client-result story stack</span><span class="t-note">Lifestyle shot → one quick presence tip → the case studies (realtor, designer, $5M contract) → soft CTA: "If this sounds like you, reply to this story."</span></span></label>
+      <label class="task"><input type="checkbox" data-k="w3t5"><span class="box"></span><span class="t-text"><span class="t-day">Day 21</span><span class="t-main">Review</span><span class="t-note">Calls booked so far? Which piece drove the most ICP profile visits — double down on that format. If the list is quiet, send one line: "Still have 2 spots open. Reply if you want details."</span></span></label>
+    </div>
+  </div>
+</section>
+
+<!-- WEEK 4 -->
+<section class="week" id="w4">
+  <div class="node"><span>4</span></div>
+  <div class="card">
+    <button class="week-head" onclick="toggle('w4')">
+      <div class="wk-meta">
+        <div class="wk-days">Days 22–30</div>
+        <div class="wk-title">Convert + compound</div>
+        <div class="wk-job">Close the first clients, build the system that outlasts Day 30</div>
+      </div>
+      <span class="wk-count" data-count></span>
+      <span class="chev"></span>
+    </button>
+    <div class="week-body">
+      <label class="task"><input type="checkbox" data-k="w4t1"><span class="box"></span><span class="t-text"><span class="t-day">Day 22–23</span><span class="t-main">Film the Authority Video</span><span class="t-note">"How I got invited into rooms millionaires pay $10K to enter — using the exact skills I teach." One specific event or connection: what you did, the skill it required, what it opened. You are the product demonstration.</span></span></label>
+      <label class="task"><input type="checkbox" data-k="w4t2"><span class="box"></span><span class="t-text"><span class="t-day">Day 24–25</span><span class="t-main">Film Reels 5 &amp; 6</span><span class="t-note">"I'm the coach high-performing women hire and don't tell anyone about." + "You're not overlooked because you're a woman. You have a presence problem, not a competence problem." Your sharpest ICP hooks.</span></span></label>
+      <label class="task"><input type="checkbox" data-k="w4t3"><span class="box"></span><span class="t-text"><span class="t-day">Day 26–27</span><span class="t-main">Run the sales calls</span><span class="t-note">Where are you now → where do you want to be → what's the gap → here's how I close it → price. Then silence. "I need to think about it" means the content needs more proof — that's data, go build more case studies.</span></span></label>
+      <label class="task"><input type="checkbox" data-k="w4t4"><span class="box"></span><span class="t-text"><span class="t-day">Day 28</span><span class="t-main">Send newsletter email #2</span><span class="t-note">Subject: "What changed in 30 days." What you built, launched, and what clients said. One CTA: the remaining program spots. This compounds the trust from email #1.</span></span></label>
+      <label class="task"><input type="checkbox" data-k="w4t5"><span class="box"></span><span class="t-text"><span class="t-day">Day 29</span><span class="t-main">Set up the evergreen system</span><span class="t-note">Record masterclass module 1 (even 20 minutes). Calendly link into the bio and newsletter footer. Create a "Results" story highlight with every testimonial.</span></span></label>
+      <label class="task"><input type="checkbox" data-k="w4t5b"><span class="box"></span><span class="t-text"><span class="t-day">Day 30</span><span class="t-main">Audit and plan Month 2</span><span class="t-note">Which content drove qualified DMs? Which story sequence got replies? Did the newsletter convert, and why? Close rate on calls? Double down on the winners. Month 2 is where the compounding starts.</span></span></label>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<div class="rules">
+  <h2>The non-negotiables</h2>
+  <p class="r-sub">Across all thirty days — no exceptions</p>
+  <ul>
+    <li>Never script yourself word for word. Bullet points only — you're great off the cuff.</li>
+    <li>Post daily on IG. Even a story counts. Consistency beats perfection.</li>
+    <li>Respond to every DM personally. You're building the pipeline, not the algorithm.</li>
+    <li>Lead with elegance transforming your life — never with politics or COVID.</li>
+    <li>The divorce stays private. Full stop.</li>
+    <li>Never mention competitors by name or frame. Your story is the differentiation.</li>
+    <li>Every piece of content moves someone one step closer to buying — or it doesn't get posted.</li>
+  </ul>
+</div>
+
+<div class="wins">
+  <h2>What success looks like at Day 30</h2>
+  <p class="w-sub">The scoreboard, not the wish list</p>
+  <div class="win-grid">
+    <div class="win"><div class="n">1–3</div><div class="l">High-ticket clients closed</div></div>
+    <div class="win"><div class="n">$2.5–15K</div><div class="l">Revenue banked</div></div>
+    <div class="win"><div class="n">3 + 6</div><div class="l">YouTube videos &amp; IG reels live</div></div>
+    <div class="win"><div class="n">2–3</div><div class="l">Testimonials collected &amp; posted</div></div>
+  </div>
+  <p class="win-list">Newsletter converted at least one client · Masterclass module 1 recorded · Booking link live in bio · A clear winning content angle, ready to scale in Month 2</p>
+</div>
+
+<footer>
+  <p>The compounding hasn't even started yet. That's Month 2.</p>
+  <div class="mark">◆ The Diamond Polish Method</div>
+</footer>
+
+</div>
+
+<script>
+function toggle(id){document.getElementById(id).classList.toggle('open');}
+
+var boxes=document.querySelectorAll('.task input');
+
+function load(){
+  boxes.forEach(function(b){
+    try{ if(localStorage.getItem('kmc_'+b.dataset.k)==='1') b.checked=true; }catch(e){}
+  });
+}
+
+function refresh(){
+  var total=0,done=0;
+  document.querySelectorAll('.week').forEach(function(w){
+    var wb=w.querySelectorAll('.task input'),d=0;
+    wb.forEach(function(b){ if(b.checked)d++; });
+    total+=wb.length; done+=d;
+    w.querySelector('[data-count]').textContent=d+' / '+wb.length;
+    if(d===wb.length){w.classList.add('done');}else{w.classList.remove('done');}
+  });
+  document.getElementById('pDone').textContent=done;
+  document.getElementById('pTotal').textContent=total;
+  document.getElementById('pBar').style.width=Math.round(done/total*100)+'%';
+}
+
+boxes.forEach(function(b){
+  b.addEventListener('change',function(){
+    try{ localStorage.setItem('kmc_'+b.dataset.k, b.checked?'1':'0'); }catch(e){}
+    refresh();
+  });
+});
+
+load();
+refresh();
+</script>
+</body>
+</html>
